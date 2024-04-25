@@ -21,8 +21,11 @@ public class SecurityConfig {
                                .password("{noop}123456") // 未加密密码
                                .roles("USER")
                                .build();
-
-        return new InMemoryUserDetailsManager(user);
+        UserDetails user2 = User.withUsername("test2")
+                .password("{noop}123456") // 未加密密码
+                .roles("USER2")
+                .build();
+        return new InMemoryUserDetailsManager(user,user2);
     }
 
 //    @Bean
